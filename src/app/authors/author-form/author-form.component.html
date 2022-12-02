@@ -1,0 +1,93 @@
+<h3>
+    <div [ngSwitch]="operation">
+        <span *ngSwitchCase="'info'">Information panel</span>
+        <span *ngSwitchCase="'create'">Creating panel</span>
+        <span *ngSwitchCase="'edit'">Editing panel</span>
+    </div>
+</h3>
+
+<div>
+    <form 
+        (ngSubmit)="onSubmit()"
+        [formGroup]="form">
+
+        <div *ngFor="let field of authorDefinition">
+    
+            <app-form-field
+                [authorField]="field"
+                [form]="form"
+                [vm]="vm"
+                [list]="authorDefinition"
+                [operation]="operation"
+                [submitted]="submitted"></app-form-field>
+                
+        </div>
+        <label for="booksList">Books list</label>
+        <ul>
+            <li *ngFor="let book of vm.booksList; let i = index">
+                <p >
+                    {{book.name}} - ({{book.genre}}) {{book.pagesNumber}} ст.
+                </p> 
+
+                <div *ngIf="(operation == 'create' || operation == 'edit')">
+
+                    <div *ngIf="book.name !== deletingBook" class="buttons">
+                        <button class="btn btn-book btn-success" (click)="editBook(book, i)">Edit</button>
+                        <button class="btn btn-book btn-danger" (click)="deleteQuestion(book)">Delete</button>
+                    </div>
+
+                    <div *ngIf="book.name === deletingBook && !isDeleting" class="buttons">
+                        <button class="btn btn-book btn-light" (click)="cancelDelete()">Cancel</button>
+                        <button class="btn btn-book btn-danger" (click)="deleteBook(vm.id, book)">Delete</button>
+                        Delete this author?
+                    </div>
+
+                </div>
+            </li>
+        </ul>
+        <div class="add" *ngIf="operation == 'create' || operation == 'edit'">
+            <div *ngFor="let book of bookDefinition">
+                
+                <app-book-field
+                    [vm]="vm"
+                    [bookField]="book"
+                    [bookForm]="bookForm"
+                    [operation]="operation"
+                    [submitted]="submitted"
+                    ></app-book-field>  
+                
+            </div>
+            <button *ngIf="!isEditingBook" type="button" class="btn btn-secondary" (click)="addBook(vm.id)">Add book to list</button>
+            <button *ngIf="isEditingBook" type="button" class="btn btn-success" (click)="saveBook(vm.id, book)">Save book</button>
+        </div>
+
+        <!-- field form -->
+        <div *ngIf="errorMessage" class="alert alert-danger"> 
+                {{ errorMessage }}
+        </div>
+        <!-- error message -->
+        <div *ngIf="status != 'waiting'">
+
+            <div *ngIf="operation === 'info'">
+                <button type="button" (click)="onBack()" class="btn btn-primary">Go back</button>
+                <button type="button" (click)="onEdit()" class="btn btn-success">Edit</button>
+            </div>
+            <div *ngIf="operation === 'edit'">
+                <button type="button" (click)="onCancel()" class="btn btn-primary">Cancel</button>
+                <button type="button" (click)="onSave()" class="btn btn-success">Save</button>
+            </div>
+            <div *ngIf="operation === 'create'">
+                <button type="button" (click)="onBack()" class="btn btn-primary">Go back</button>
+                <button type="button" (click)="onCreate()" class="btn btn-success">Create</button>
+            </div>
+        </div>
+        <!-- buttons -->
+    
+        <div *ngIf="status === 'waiting'">
+            Waiting ...
+        </div>
+        <!-- status -->
+
+    </form>
+</div>
+<!-- div-form -->

@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="search">
+        <input type="text" #field list="searchHint" id="searchField"> 
+        <datalist id="searchHint">
+            <option *ngFor="let option of listUserSearch" [value]="option">
+        </datalist>
+        <button class="btn btn-secondary" (click)="search(field.value)">Search</button>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="col-sm-1" (click)="filter($event)">#</th>
+                <th class="col-sm-5 col-xs-3" (click)="filter($event)">Author</th>
+                <th class="col-md-2 col-xs-1" (click)="filter($event)">Books</th>
+                <th class="col-sm-4 col-xs-7">Editing actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let author of list">
+                <td class="col-sm-1">{{ author.id }}</td>
+                <td class="col-sm-5 col-xs-3">{{ author.firstName }} {{ author.lastName }}</td>
+                <td class="col-md-2 col-xs-1">{{ author.booksList.length }}</td>
+
+                <td class="col-sm-4 col-xs-7" class="control" *ngIf="!screen.isSmall() && (author.id != deleteId)">
+                    <button class="btn btn-info" (click)="showAuthorInfo(author.id)">Info</button>
+                    <button class="btn btn-warning" (click)="editAuthor(author.id)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteQuestion(author.id)">Delete</button>
+                </td>
+
+                <td class="col-sm-4 col-xs-7" *ngIf="!screen.isSmall() && (author.id === deleteId && !isDeleting)">
+                    <button class="btn btn-light" (click)="cancelDelete()">Cancel</button>
+                    <button class="btn btn-danger" (click)="deleteAuthor(author.id)">Delete</button>
+                    <p>Delete this author?</p>
+                    <p *ngIf="deleteError" > {{ deleteError }} </p>
+                </td>
+                
+                <td class="col-lg-4 col-sm-4 col-3" *ngIf="!screen.isSmall() &&  (author.id === deleteId && isDeleting)">
+                    Deleting ...
+                </td>
+
+                <!-- for big screen -->
+
+                <td class="control" *ngIf="screen.isSmall()  && (author.id != deleteId)">
+                    <button class="btn btn-info" title="Info" (click)="showAuthorInfo(author.id)">I</button>
+                    <button class="btn btn-warning" title="Edit" (click)="editAuthor(author.id)">E</button>
+                    <button class="btn btn-danger" title="Delete" (click)="deleteQuestion(author.id)">D</button>
+                </td>
+                <td class="col-sm-4 col-xs-7" *ngIf="screen.isSmall() && (author.id === deleteId && !isDeleting)">
+                    <button class="btn btn-light" (click)="cancelDelete()">Cancel</button>
+                    <button class="btn btn-danger" (click)="deleteAuthor(author.id)">Delete</button>
+                    Delete this author?
+                    <p *ngIf="deleteError" > {{ deleteError }} </p>
+                </td>
+                <td class="col-lg-4 col-sm-4 col-3" *ngIf="screen.isSmall() && (author.id === deleteId && isDeleting)">
+                    Deleting ...
+                </td>
+
+                <!-- for small screens -->
+
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-primary" (click)="createAuthor()">Add new author</button>
+</div>

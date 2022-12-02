@@ -1,0 +1,72 @@
+<div 
+[hidden]="operation == 'create' && bookField.isId" 
+[formGroup]="bookForm"
+*ngIf="bookForm"
+    >
+    <div [ngSwitch]="bookField.type">
+
+        <div 
+            *ngSwitchCase="'string'" 
+            class="form-group">
+
+            <label [for]="bookField.key"> 
+                {{ bookField.label }} 
+            </label>
+
+            <input 
+                *ngIf="bookField.key !== 'genre'"
+                class="form-control"
+                type="text"
+                placeholder="Enter name"
+                #{{bookField.key}}
+                [formControlName]="bookField.key" 
+                [id]="bookField.key"
+                [readonly]="operation == 'info' || bookField.isId">
+
+            <select 
+                
+                *ngIf="bookField.key == 'genre'"
+                class="form-control"
+                #{{bookField.key}}
+                [formControlName]="bookField.key" 
+                [id]="bookField.key">
+                <option value="">--Make a choice--</option>
+
+                <option 
+                    *ngFor="let genre of genreList" 
+                    value="{{ genre }}">
+                    {{ genre }}
+                </option>
+                
+            </select>
+
+        </div> 
+
+        <div 
+            *ngSwitchCase="'number'" 
+            class="form-group">
+
+            <label [for]="bookField.key"> 
+                {{ bookField.label }} 
+            </label>
+
+            <input 
+                class="form-control"
+                type="number"
+                #{{bookField.key}}
+                placeholder="Enter number"
+                
+                [formControlName]="bookField.key" 
+                [id]="bookField.key"
+                [readonly]="operation == 'info' || bookField.isId">
+        </div>
+
+        <div 
+            *ngIf="bookForm.get(bookField.key)!.hasError('required') && (submitted || bookForm.get(bookField.key)!.touched)" 
+            class="alert alert-danger"> 
+            {{ bookField.label }} is required
+        </div>
+    
+    </div>
+
+</div>

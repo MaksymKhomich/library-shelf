@@ -1,0 +1,62 @@
+<div class="wrapper">
+  <div class="container">
+
+    <div class="header row">
+    
+      <div class="col-sm-7">
+        <a routerLink="/home" class="logo">
+          <img src="assets/favicon.png" alt="logo">
+          <h2>Welcome in our Library</h2>
+        </a>
+      </div>
+    
+      <div class="col-sm-5 right-box">
+        <button class="btn btn-primary" routerLinkActive="active" routerLink="/authors">Authors</button>
+        <button class="btn btn-primary" routerLinkActive="active" routerLink="/books">Genre</button>
+      </div>
+        
+    </div>
+    <!-- header end -->
+
+    <div class="content"> 
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- content end -->
+
+    <div class="row footer">
+
+      <div class="col-sm-4">
+        <a routerLink="/home" class="logo">
+          <img src="assets/favicon.png" alt="logo">
+          <h2>ibrary</h2>
+        </a>
+      </div>
+      
+      
+      <div class="col-sm-4">
+        
+        <p>
+          Designed by
+        </p>
+        
+        <a href="https://www.linkedin.com/in/maksym-k-a44307247/">
+          <span>
+            Maksym Khomich
+          </span>
+        </a>
+      </div>
+      
+      <div class="col-sm-4"> 
+        &copy; All rights reserved 2022
+      </div> 
+      
+    </div>
+    <!-- footer end -->
+    
+  </div>
+  <!-- container end -->
+
+</div>
+<!-- wrapper end -->
+

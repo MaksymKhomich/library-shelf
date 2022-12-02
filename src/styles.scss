@@ -1,0 +1,21 @@
+html,
+body,
+.wrapper{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background: #f9e5dc;
+}
+.wrapper{
+    padding: 10px;
+}
+@media screen and (max-width: 575px) {
+    .home{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+}

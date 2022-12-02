@@ -1,0 +1,54 @@
+.container {
+    width: 100%;
+    height: 100%;
+    td,
+    th{
+        padding: 5px 0;
+        vertical-align: middle;
+    }
+    
+}
+.control{
+    margin: 0 auto;
+}
+.search{
+    margin: 20px;
+    height: 40px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+button{
+    font-weight: 500;
+    margin-right: 5px;
+    height: 30px;
+    padding: 10px;
+    line-height: 10px;
+}
+th{
+    cursor: pointer;
+}
+.btn-info{
+    width: 80%;
+}
+@media screen and (max-width: 767px) {
+    [class*="col-"]{
+        font-size: 14px;
+    }
+    .container {
+        td,
+        th{
+            padding: 5px;
+            vertical-align: middle;
+        }
+        .search{
+            margin: 8px;
+        }
+    }
+}
+@media screen and (max-width: 420px) {
+    [class*="col-"]{
+        font-size: 12px;
+    }
+}

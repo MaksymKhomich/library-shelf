@@ -1,0 +1,24 @@
+.container {
+    margin: 0 auto;
+    width: 85%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h1 {
+        text-align: center;
+        font-size: 9em;
+        line-height: 1.3em;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    p {
+        text-align: center;
+        max-width: 480px;
+        font-size: 1.5em;
+        padding: 0 1rem;
+        margin: 0 auto;
+    }
+}

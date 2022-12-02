@@ -1,0 +1,16 @@
+<div *ngIf="author">
+
+    <app-author-form
+    [vm]="author" 
+    [books]="books"
+    [authorDefinition]="authorInput"
+    [bookDefinition]="bookInput"
+    [operation]="operation"
+    [errorMessage]="errorMessage"
+    (update)="updateAuthorInfo($event)"
+    (create)="createAuthorInfo($event)"
+    ></app-author-form>
+
+    <!-- author Definition Input -->
+
+</div>

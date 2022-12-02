@@ -1,0 +1,32 @@
+$primalText: #f16775;
+
+div{
+    padding: 50px;
+    margin:0 auto;
+}
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.right-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+button{
+    background: #bddbfa linear-gradient(to bottom, #bddbfa 5%, #80b5ea 100%);
+    border-radius: 6px;
+    border: 1px solid #dcdcdc;
+    cursor: pointer;
+    color: #000;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 6px 20px;
+    letter-spacing: 1px;
+    margin-right: 8px;
+}
+.active {
+    background: #ffffff linear-gradient(to bottom, $primalText 5%, #f6f6f6 100%);
+    color: #000;
+}

@@ -1,0 +1,66 @@
+<div 
+    [hidden]="operation == 'create' && authorField.isId" 
+    [formGroup]="form">
+
+    <div [ngSwitch]="authorField.type">
+
+        <div 
+            *ngSwitchCase="'string'" 
+            class="form-group">
+
+            <label [for]="authorField.key"> 
+                {{ authorField.label }} 
+            </label>
+
+            <input 
+                class="form-control"
+                type="text" 
+                [formControlName]="authorField.key" 
+                [id]="authorField.key"
+                [readonly]="operation == 'info' || authorField.isId">
+        </div> 
+
+        <div 
+            *ngSwitchCase="'number'" 
+            class="form-group">
+
+            <label [for]="authorField.key"> 
+                {{ authorField.label }} 
+            </label>
+
+            <input 
+                class="form-control"
+                type="number" 
+                [formControlName]="authorField.key" 
+                [id]="authorField.key"
+                [readonly]="operation == 'info' || authorField.isId">
+        </div>
+
+        <div 
+            *ngIf="authorField.key == 'dateOfBirth'"
+            class="form-group">
+
+            <label [for]="authorField.key"> 
+                {{ authorField.label }} 
+            </label>
+            <input 
+                #date
+                class="form-control"
+                type="date" 
+                value="{{ vm.dateOfBirth }}"
+                [formControlName]="authorField.key" 
+                [id]="authorField.key"
+                
+                [readonly]="operation == 'info' || authorField.isId">
+                
+        </div>
+
+        <div 
+            *ngIf="form.get(authorField.key)!.hasError('required') && (submitted || form.get(authorField.key)!.touched)" 
+            class="alert alert-danger"> 
+            {{ authorField.label }} is required
+        </div>
+    
+    </div>
+
+</div>
