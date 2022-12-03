@@ -58,7 +58,6 @@ export class BooksService {
     "Роман",
     "Розповідь",
     "Міф",
-    "--Додати свій варіант--",
   ]
 
   getBooks(): Observable<any>{

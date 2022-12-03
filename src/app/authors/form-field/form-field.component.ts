@@ -25,10 +25,5 @@ export class FormFieldComponent implements OnInit{
   
   ngOnInit(): void {
   }
-
-  print(min:any){
-    console.dir(min);
-    console.log(this.vm);
-  }
   
 }

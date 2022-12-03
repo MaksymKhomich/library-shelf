@@ -29,17 +29,28 @@
                 class="form-control"
                 #{{bookField.key}}
                 [formControlName]="bookField.key" 
-                [id]="bookField.key">
-                <option value="">--Make a choice--</option>
+                [id]="bookField.key"
+                (change)="createGenre($event.target)"
+                >
+                <option value="" disabled>--Make a choice--</option>
 
                 <option 
                     *ngFor="let genre of genreList" 
                     value="{{ genre }}">
                     {{ genre }}
                 </option>
-                
+                <option value="--Додати свій варіант--">--Додати свій варіант--</option>
             </select>
 
+            <div *ngIf="isAddGenre && bookField.key == 'genre'">
+
+                <label for="inputGenre">New genre</label>
+                <input type="text" class="form-control" placeholder="Enter your genre" id='inputGenre' #addNewGenre>
+                <button class="btn btn-light" (click)="addGenre(addNewGenre.value)">Add genre</button>
+
+            </div>
+
+            
         </div> 
 
         <div 

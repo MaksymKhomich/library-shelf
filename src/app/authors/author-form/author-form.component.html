@@ -54,9 +54,9 @@
                     [bookForm]="bookForm"
                     [operation]="operation"
                     [submitted]="submitted"
-                    ></app-book-field>  
-                
+                    ></app-book-field>
             </div>
+
             <button *ngIf="!isEditingBook" type="button" class="btn btn-secondary" (click)="addBook(vm.id)">Add book to list</button>
             <button *ngIf="isEditingBook" type="button" class="btn btn-success" (click)="saveBook(vm.id, book)">Save book</button>
         </div>

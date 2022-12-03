@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthorInput } from '../author-info/author-info.component';
 import { Location } from '@angular/common';
-import { BookInput } from 'src/app/services/books.service';
+import { BookInput, BooksService } from 'src/app/services/books.service';
 import { AuthorsService } from 'src/app/services/authors.service';
 import { BookFieldComponent } from 'src/app/books/book-field/book-field.component';
 
@@ -26,14 +26,14 @@ export class AuthorFormComponent implements OnInit {
   @Input() errorMessage!: string;
   @Output() update: EventEmitter<any> = new EventEmitter();
   @Output() create: EventEmitter<any> = new EventEmitter();
-
+  
   form!: FormGroup;
   status!: string;
   submitted = false;
-
+  
   isDeleting = false;
   deletingBook!: number;
-
+  
   isEditingBook = false;
   index!: number;
 
@@ -136,6 +136,7 @@ export class AuthorFormComponent implements OnInit {
     name!.value = book.name;
     genre!.value = book.genre;
     pagesNumber!.value = book.pagesNumber;
+
     this.index = index;
     this.isEditingBook = true;
   }
@@ -162,7 +163,5 @@ export class AuthorFormComponent implements OnInit {
       });
       
   }
-
-  // select = document.querySelector('select');
 
 }

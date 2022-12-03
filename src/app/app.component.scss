@@ -61,11 +61,11 @@ div.header {
 
 .content{
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
+    &::-webkit-scrollbar{
+        display:none;
+    } 
 }
-::-webkit-scrollbar{
-    display:none;
-} 
 
 // /* footer part */
 
