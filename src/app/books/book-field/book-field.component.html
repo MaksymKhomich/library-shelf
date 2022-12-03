@@ -42,7 +42,7 @@
                 <option value="--Додати свій варіант--">--Додати свій варіант--</option>
             </select>
 
-            <div *ngIf="isAddGenre && bookField.key == 'genre'">
+            <div *ngIf="isAddGenre && bookField.key == 'genre'" class="addGenre">
 
                 <label for="inputGenre">New genre</label>
                 <input type="text" class="form-control" placeholder="Enter your genre" id='inputGenre' #addNewGenre>

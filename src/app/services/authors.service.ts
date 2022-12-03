@@ -15,7 +15,6 @@ export interface Author{
 })
 
 export class AuthorsService {
-  
   authorsList: Array<Author> = [
     { id: 1, lastName: "Шевченко", firstName: "Тарас", dateOfBirth: "1814-03-09", booksList: [
       { name: "Пророк", genre: "Роман", pagesNumber: 348},
@@ -53,22 +52,22 @@ export class AuthorsService {
   }
 
   getAuthor(id: number): Observable<any>{
-    const author = this.authorsList.find(item => item.id === id);
+    const author = this.authorsList.find((item:any) => item.id === id);
     return of(author)
   }
 
   deleteAuthor(id: number): Observable<any> {
-    return of({}).pipe(map(() => this.authorsList.splice(this.authorsList.findIndex(item => item.id === id), 1)));
+    return of({}).pipe(map(() => this.authorsList.splice(this.authorsList.findIndex((item:any) => item.id === id), 1)));
   }
 
   createAuthor(newAuthor: Author): Observable<any>{
     this.authorsList.push(newAuthor);
-    let author = this.authorsList.find(item => item.id === newAuthor.id);
+    let author = this.authorsList.find((item:any) => item.id === newAuthor.id);
     return of(author) && this.deleteAuthor(0);
   }
 
   updateAuthor(ForUpdating: Author): Observable<any> {
-      let author = this.authorsList.findIndex(item => item.id === ForUpdating.id);
+      let author = this.authorsList.findIndex((item:any) => item.id === ForUpdating.id);
       let newAuthor = Object.assign({}, ForUpdating);
       this.authorsList[author] = newAuthor;
       return of(newAuthor);
@@ -81,16 +80,13 @@ export class AuthorsService {
 
   deleteBook(id: number, book: any): Observable<any> {
     let author = this.authorsList[id-1];
-    author.booksList.splice(author.booksList.findIndex(item => item.name == book.name), 1)
-  
+    author.booksList.splice(author.booksList.findIndex((item:any) => item.name == book.name), 1)
     return of(author)
   }
 
   updateBook(id: number, book: any, index: number): Observable<any> {
-    let author = this.authorsList.find(author => author.id == id);
+    let author = this.authorsList.find((author:any) => author.id == id);
     author!.booksList[index] = book;
-    
-
     return of(author)
   }
 }

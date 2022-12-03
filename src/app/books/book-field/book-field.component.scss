@@ -1,3 +1,8 @@
 select{
     color: black;
 }
+.addGenre{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

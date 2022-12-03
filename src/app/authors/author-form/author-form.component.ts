@@ -124,7 +124,7 @@ export class AuthorFormComponent implements OnInit {
   addBook(id: number){
     let newBook = this.bookField.createBook();
     
-    let Author = this.AuthorsService.authorsList.find(item => item.id === id);
+    let Author = this.AuthorsService.authorsList.find((item:any) => item.id === id);
     Author!.booksList.push(newBook);
   }
 

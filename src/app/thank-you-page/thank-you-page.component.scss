@@ -1,0 +1,13 @@
+div{
+    height: 100%;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    h1{
+        width: 80%;
+        text-align: center;
+    }
+}

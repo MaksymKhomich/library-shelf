@@ -41,6 +41,7 @@ export class AuthorsComponent implements OnInit  {
         findList = data;
       });        
     }
+    
   }
   
   createAuthor() {

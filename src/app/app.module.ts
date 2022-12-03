@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthorFormComponent } from './authors/author-form/author-form.component';
 import { FormFieldComponent } from './authors/form-field/form-field.component';
 import { BookFieldComponent } from './books/book-field/book-field.component';
+import { ThankYouPageComponent } from './thank-you-page/thank-you-page.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BookFieldComponent } from './books/book-field/book-field.component';
     AuthorFormComponent,
     FormFieldComponent,
     BookFieldComponent,
+    ThankYouPageComponent,
   ],
   imports: [
     BrowserModule,

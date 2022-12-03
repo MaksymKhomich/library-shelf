@@ -73,7 +73,6 @@ export class AuthorInfoComponent implements OnInit{
 
   ngOnInit(): void {
     this.operation = this.route.snapshot.params['operation'];
-
     if (this.operation === "create") {
       this.author = { 
         id: 0,
@@ -96,15 +95,13 @@ export class AuthorInfoComponent implements OnInit{
     this.errorMessage = null!;
     this.authorService.createAuthor(author)
     .subscribe(
-      s => this.router.navigate(['/authors']),
-      error => this.errorMessage = "Error creating author");
-  }
+      s => this.router.navigate(['/thank-you'])
+  )}
     
   updateAuthorInfo(author: Author) {
     this.errorMessage = null!; 
     this.authorService.updateAuthor(author).subscribe(
-      s => this.router.navigate(['/authors']),
-      error => this.errorMessage = "Error updating author");
-  }
+      s => this.router.navigate(['/thank-you']),
+  )}
   
 }

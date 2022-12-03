@@ -27,7 +27,7 @@ export class BooksService {
   constructor(
     private authorService:AuthorsService,
   ){}
-
+  
   BookInput: Array<BookInput> = [
     {
       key: "name",
@@ -62,8 +62,8 @@ export class BooksService {
 
   getBooks(): Observable<any>{
     let bookList: any[] = [];
-    this.authorService.authorsList.forEach(item => {
-      item.booksList.forEach(book => {
+    this.authorService.authorsList.forEach((item:any) => {
+      item.booksList.forEach((book:any) => {
         bookList.push(book);
         book.id = item.id;
       })
@@ -72,7 +72,7 @@ export class BooksService {
   }
 
   showAuthor(id: number) :number{
-    this.authorService.authorsList.find(item => {
+    this.authorService.authorsList.find((item:any) => {
       item.id == id
     })
     return id
