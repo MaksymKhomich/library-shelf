@@ -121,7 +121,7 @@ a.logo{
 
 // /* Responsive Styles */
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
     a.logo{
         h2{
             font-size: 1.5rem;
@@ -130,11 +130,18 @@ a.logo{
 }
 
 @media screen and (min-width: 575px) {
+    .container{
+        padding: 0 ;
+        .footer,
+        .header{
+            padding: 5px 0;
+        }
+    }
     
     .footer div,
     .footer span{
         flex-direction: column;
-        font-size: 1rem;
+        font-size: 0.8rem;
         align-items: center;
     }
     .footer .logo{
@@ -144,9 +151,13 @@ a.logo{
 @media screen and (max-width: 575px) {
     .container{
         padding: 0 ;
+        .footer,
+        .header{
+            padding: 5px 0;
+        }
     }
     .header .logo{
-        margin-bottom: 15px;
+        margin-bottom: 8px;
         h2{
             font-size: 1rem;
         }

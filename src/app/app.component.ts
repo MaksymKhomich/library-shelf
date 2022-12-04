@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthorsService } from './services/authors.service';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +7,9 @@ import { AuthorsService } from './services/authors.service';
 })
 export class AppComponent {
   title = 'Library';
+  ngOnInit(){
+    if(!localStorage['authorsList']){
+      localStorage.setItem('authorsList','[]')
+    }
+  }
 }

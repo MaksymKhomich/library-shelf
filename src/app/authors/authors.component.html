@@ -42,9 +42,9 @@
                 <!-- for big screen -->
 
                 <td class="control" *ngIf="screen.isSmall()  && (author.id != deleteId)">
-                    <button class="btn btn-info" title="Info" (click)="showAuthorInfo(author.id)">I</button>
-                    <button class="btn btn-warning" title="Edit" (click)="editAuthor(author.id)">E</button>
-                    <button class="btn btn-danger" title="Delete" (click)="deleteQuestion(author.id)">D</button>
+                    <button class="btn btn-info" title="Info" (click)="showAuthorInfo(author.id)">Info</button>
+                    <button class="btn btn-warning" title="Edit" (click)="editAuthor(author.id)">Edit</button>
+                    <button class="btn btn-danger" title="Delete" (click)="deleteQuestion(author.id)">Delete</button>
                 </td>
                 <td class="col-sm-4 col-xs-7" *ngIf="screen.isSmall() && (author.id === deleteId && !isDeleting)">
                     <button class="btn btn-light" (click)="cancelDelete()">Cancel</button>

@@ -19,7 +19,7 @@ export class BooksComponent implements OnInit {
   constructor(
     private booksService: BooksService,
     readonly screen: ScreenCheckerService,
-    private author:AuthorsComponent,
+    private author: AuthorsComponent,
   ) {
   }
   
@@ -50,7 +50,7 @@ export class BooksComponent implements OnInit {
     let target = event.target.innerText;
     this.booksService.getBooks().subscribe(data => {
       this.list = data; 
-      this.list.sort((a:any, b:any) => {
+      this.list.sort((a: any, b: any) => {
         if(target == "Book's name") {
           return a.name.localeCompare(b.name);
         } else if(target == "Genre") {

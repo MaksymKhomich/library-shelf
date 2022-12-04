@@ -62,7 +62,7 @@ export class BooksService {
 
   getBooks(): Observable<any>{
     let bookList: any[] = [];
-    this.authorService.authorsList.forEach((item:any) => {
+    this.authorService.authorsList.forEach((item: any) => {
       item.booksList.forEach((book:any) => {
         bookList.push(book);
         book.id = item.id;
@@ -72,13 +72,13 @@ export class BooksService {
   }
 
   showAuthor(id: number) :number{
-    this.authorService.authorsList.find((item:any) => {
+    this.authorService.authorsList.find((item: any) => {
       item.id == id
     })
     return id
   }
 
-  filterBooksList(text: string, findList:any[]) {
+  filterBooksList(text: string, findList: any[]) {
     return findList.filter(post => post.name.toLowerCase().includes(text.toLowerCase()) || post.genre.toLowerCase().includes(text))
   }
 }

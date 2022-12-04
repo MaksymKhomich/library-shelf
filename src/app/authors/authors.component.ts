@@ -24,13 +24,18 @@ export class AuthorsComponent implements OnInit  {
     readonly screen: ScreenCheckerService,
     readonly authors: AuthorsService,
     ) {
+      // localStorage.setItem('authorsList', JSON.stringify(this.list))
     }
     
   ngOnInit(): void {
+    let i = 1;
     this.authors.getAuthors().subscribe(data => {
       this.list = data;
       findList = data;
     });
+    for(let author of this.list){
+      author.id = i++
+    }
 
     if(this.list.some( item => item.id == 0))
     this.deleteAuthor(0);
